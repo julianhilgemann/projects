@@ -8,3 +8,5 @@ showcase and collection of useful references
 -- Make sure sample reports a) make sense and b) look consistent
 -- extend bi scape and add market dashboard
 -- conceptualize Portfolio Dashboard / Project?
+-- Simple Market dashboard as a starter
+-- Marketing analytics? Google Analytics?
