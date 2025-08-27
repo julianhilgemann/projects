@@ -1,12 +1,23 @@
 # projects
 showcase and collection of useful references
--- priority: adjust color schemes 
--- align doards
--- business cases
--- extract the json theme from the dark themed project. 
--- codify it as json in Powerbi.tips
--- Make sure sample reports a) make sense and b) look consistent
--- extend bi scape and add market dashboard
--- conceptualize Portfolio Dashboard / Project?
--- Simple Market dashboard as a starter
--- Marketing analytics? Google Analytics?
+
+further additions and ideas that will be implemented in due time
+
+Business Relevant perspectives
+
+add a simple market perspective using SDMX adapter to access ecb data
+add a asset portfolio tracker with according risk metrics in a dashboard 
+marketign analytics dashboard - or tapping into google analytics of a live project
+
+Final Setup should be 
+
+1) Operations / Sales
+2) Marketing /Leads
+3) Market and big picture
+4) Assets & Finance -> Asset Tracker using stock ticker + Backtests
+
+Look & Feel
+
+adjust color schemes -> align dashboards visually 
+extract the json theme from the dark themed project
+codify it as json in Powerbi.tips
