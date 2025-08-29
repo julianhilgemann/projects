@@ -1,50 +1,101 @@
-# projects
-showcase and collection of useful references
+# 🔧 DE Macro & Portfolio One-Pager (WIP)
 
-further additions and ideas that will be implemented in due time
+**TL;DR:** The old dashboards in my GitHub are **spare parts**.  
+This is the **main project** I’m building now: a clean, finance-credible, single-page **Portfolio Management Dashboard** with **German rates, yield curve, 5 equities, and risk** — designed for hiring signal in BI/Finance (🇨🇭/🇩🇪 focus).
 
-Business Relevant perspectives
+> **Status:** Work in progress. The README tells you exactly what’s coming and how it’s structured.
 
--add a simple market perspective using SDMX adapter to access ecb data
--add a asset portfolio tracker with according risk metrics in a dashboard 
--marketign analytics dashboard - or tapping into google analytics of a live project
+---
 
-Final Setup could be 
+## Why this exists
+I’m consolidating my previous experiments (synthetic sales UI, mini company FP&A, time-series lab) into **one flagship**: a dense, well-designed **Power BI one-pager** backed by a tiny, reproducible pipeline.
 
-1) Operations / Sales
-2) Marketing /Leads
-3) Market and big picture
-4) Assets & Finance -> Asset Tracker using stock ticker + Backtests
+---
 
-Look & Feel
+## What the dashboard will show (one page)
+- **KPI strip:** YTD, CAGR, Max Drawdown, Vol(60D), Sharpe(60D), VaR/ES(95%).
+- **Portfolio path:** equity curve + drawdown ribbon.
+- **Rate environment:** **Bundesbank policy rate (monthly)** forward-filled to daily.
+- **German yield curve:** a few tenors (e.g., 3M / 2Y / 10Y) daily.
+- **5 German equities:** daily close (EUR), **equal-weight, monthly rebalance**.
+- **Risk panel:** rolling Sharpe, return histogram, current target weights.
 
-adjust color schemes -> align dashboards visually 
-extract the json theme from the dark themed project
-codify it as json in Powerbi.tips
+---
 
-Features in BI
+## Scope (locked, so it ships)
+- **Compute** core metrics in **Python** → export CSV.
+- **DuckDB** to assemble tidy tables → CSVs for Power BI.
+- **Power BI** single page with a consistent **dark theme**.
+- No dbt / APIs in v1 (may add later in a separate branch).
 
-- Clean Starschema modeling
-- Parameter Fields for various dimensions
-- clean UI/UX across all boards
-- Calculation Groups
-- Elaborate Dim_Dates
-- Variance Analysis
-- Seasonalities
-- classic patterns (MTD, YTD, YTDYO, MTDOY, QTD, QTDOY, MoM, YoY, QoQ)
-- Interactive and responsive ASCII Indicators and tooltips
-- Forecasts
-- IBCS
-- Minto Layout
-- Figma Wireframing
-- Heatmaps
-- Interesting Icons
-- Map-Visuals
-- Drilldown/ Drillthrough
-- Stats/Regr/Scatter/Auto-Cluster Function
-- gauge/bullet
-- conditional formatting
-- warning labels when treshold reached
-- Trends + Moving Averages and technical indicators to show ts-dynamics
+---
 
-Exact Scoping and Reqs for each project yet tbd
+## Data contracts (planned CSVs)
+
+`data_raw/`
+- `cb_rate_monthly.csv` → `DateMonth (YYYY-MM-01), PolicyRate_pct`
+- `de_yields_daily.csv` → `Date, TenorY (0.25|2|10), Yield_pct`
+- `equities_de_daily.csv` → `Date, Ticker, Close_EUR` (5 large DE names)
+
+`data_out/` (generated)
+- `portfolio_daily.csv` → `Date, PortValue, PortRet, Drawdown, Vol60D, Sharpe60D, VaR95_252, ES95_252, W_[Asset]*`
+- `rate_daily.csv`      → `Date, PolicyRate_pct` (forward-filled)
+- `yields_long.csv`     → `Date, TenorY, Yield_pct`
+- `equities_returns.csv`→ `Date, Ticker, Return`
+
+---
+
+## Repo layout (planned)
+```yaml
+portfolio-onepager/
+├─ data_raw/
+├─ data_out/ # generated
+├─ pipeline/
+│ ├─ build_portfolio.py # Python: returns, rebal, risk, exports
+│ └─ wrangle_duckdb.sql # DuckDB: assemble tidy outputs
+├─ powerbi/
+│ ├─ PortfolioOnePager.pbix # single page
+│ └─ theme_dark.json
+└─ docs/
+├─ README.md # this file
+└─ screenshots/ # GIFs once the page is ready
+```
+---
+
+## Quickstart (once files are in the repo)
+
+# 1) Generate outputs
+python pipeline/build_portfolio.py
+
+# 2) Tidy with DuckDB
+duckdb -init pipeline/wrangle_duckdb.sql
+
+# 3) Open Power BI
+#   File: powerbi/PortfolioOnePager.pbix
+#   Data source paths point to /data_out/*.csv
+
+Design principles
+One page, zero fluff. Clear hierarchy, IBCS-ish visuals, strong tooltips.
+
+Small, reproducible data. Everything runs locally and is frozen to CSV.
+
+Monthly rebalance logic, equal-weight portfolio, tidy data contracts.
+
+Polished UX with a consistent theme and clear KPI definitions.
+
+Legacy projects (spare parts)
+Older repos in my GitHub are archived experiments (UI, FP&A variance, TS methods).
+I’ll pull only the strongest patterns (screenshots + snippets) into /docs here.
+
+Roadmap (short and practical)
+ Scope + data contracts
+
+ Python pipeline (returns, rebal, risk, exports)
+
+ DuckDB tidy tables
+
+ Power BI one-pager layout + theme
+
+ GIF + screenshots in /docs/screenshots
+
+ Minimal KPI glossary
