@@ -4,3 +4,5 @@ requests>=2.32
 yfinance>=0.2
 duckdb>=1.0
 python-dateutil>=2.9
+arch
+streamlit
