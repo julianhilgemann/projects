@@ -1,14 +1,9 @@
 # 🔧 DE Macro & Portfolio One-Pager (WIP)
 
 **TL;DR:** The old dashboards in my GitHub are **spare parts**.  
-This is the **main project** I’m building now: a clean, finance-credible, single-page **Portfolio Management Dashboard** with **German rates, yield curve, 5 equities, and risk** — designed for hiring signal in BI/Finance (🇨🇭/🇩🇪 focus).
+This is the **main project** I’m building now: a single-page **Portfolio Management Dashboard** with **German rates, yield curve, 5 equities, and risk** 
 
-> **Status:** Work in progress. The README tells you exactly what’s coming and how it’s structured.
-
----
-
-## Why this exists
-I’m consolidating my previous experiments (synthetic sales UI, mini company FP&A, time-series lab) into **one flagship**: a dense, well-designed **Power BI one-pager** backed by a tiny, reproducible pipeline.
+> **Status:** Work in progress. The README tells you  what’s coming and how it’s structured.
 
 ---
 
@@ -45,18 +40,11 @@ I’m consolidating my previous experiments (synthetic sales UI, mini company FP
 
 ---
 
-## Repo layout (planned)
-```yaml
-portfolio-onepager/
-├─ data_raw/
-├─ data_out/ # generated
-├─ pipeline/
-│ ├─ build_portfolio.py # Python: returns, rebal, risk, exports
-│ └─ wrangle_duckdb.sql # DuckDB: assemble tidy outputs
-├─ powerbi/
-│ ├─ PortfolioOnePager.pbix # single page
-│ └─ theme_dark.json
-└─ docs/
-├─ README.md # this file
-└─ screenshots/ # GIFs once the page is ready
-```
+## Possible Future Directions
+
+Once the basic pipeline is done the following extensions are planned
+
+- data-warehousing using dbt against duckdb for an automated and flexible transformation workflow
+- Integrating Airflow into the whole stack to streamline the data retrieval and dbt transformations
+- containerization of the tools using docker for reproducibility
+- cloud deployment and resource management using k8s on azure and integrating PBI Service or open source/low cost with metabase
