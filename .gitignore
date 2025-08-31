@@ -1,3 +1,6 @@
 /.vscode
 /duckdb.exe
 /data.duckdb
+/.venv
+/logs
+/.user.yml

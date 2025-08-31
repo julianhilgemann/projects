@@ -1,8 +1,17 @@
-pandas>=2.2
-numpy>=1.26
-requests>=2.32
-yfinance>=0.2
-duckdb>=1.0
-python-dateutil>=2.9
-arch
+# core
+numpy
+pandas
+duckdb>=1.1,<2
+requests
+
+# app & viz
 streamlit
+plotly
+
+# time-series
+arch
+statsmodels
+
+# dbt (pair these together for Py 3.9)
+dbt-core==1.9.*
+dbt-duckdb==1.9.*
