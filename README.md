@@ -44,7 +44,6 @@ This is the **main project** I’m building now: a single-page **Portfolio Manag
 
 Once the basic pipeline is done the following extensions are planned
 
-- data-warehousing using dbt against duckdb for an automated and flexible transformation workflow
-- Integrating Airflow into the whole stack to streamline the data retrieval and dbt transformations
+- Integrating Airflow or dagster into the whole stack to streamline the data retrieval and dbt transformations
 - containerization of the tools using docker for reproducibility
 - cloud deployment and resource management using k8s on azure and integrating PBI Service or open source/low cost with metabase

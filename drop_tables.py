@@ -4,7 +4,9 @@ import duckdb
 con = duckdb.connect("data.duckdb")  # opens/creates DB in current folder
 
 # drop the two tables (won't error if they don't exist)
-con.execute("DROP TABLE IF EXISTS ...;")
+con.execute("""
+DROP TABLE IF EXISTS dim_date;
+""")
 
 # show what's left
 print(con.sql("""
