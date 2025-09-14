@@ -42,9 +42,11 @@ This is the **main project** I’m building now: a single-page **Portfolio Manag
 
 ## Possible Future Directions
 
+- testpush
+
 Once the basic pipeline is done the following extensions are planned
 
 - Integrating Airflow or dagster into the whole stack to streamline the data retrieval and dbt transformations
 - containerization of the tools using docker for reproducibility
 - cloud deployment and resource management using k8s on azure 
--  integrating PBI Service or open source/low cost with metabase
+- integrating PBI Service or open source/low cost with metabase
