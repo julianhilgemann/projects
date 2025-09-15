@@ -42,8 +42,6 @@ This is the **main project** I’m building now: a single-page **Portfolio Manag
 
 ## Possible Future Directions
 
-- testpush
-
 Once the basic pipeline is done the following extensions are planned
 
 - Integrating Airflow or dagster into the whole stack to streamline the data retrieval and dbt transformations
