@@ -1,1 +1,0 @@
-readme tweak - setup via osx.
